@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taskify</title>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #181818;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            padding: 6px;
+        }
+
+        .progress-container {
+            background-color: #141414;
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            margin: auto;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .progress-item {
+            text-align: center;
+            width: 60px;
+        }
+
+        .progress-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 3px solid #252525;
+            position: relative;
+            font-size: 12px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .progress-circle span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .progress-career {
+            border-color: #c13571;
+        }
+
+        .progress-mental {
+            border-color: #f4b75656;
+        }
+
+        .progress-sport {
+            border-color: #50b05056;
+        }
+
+        .progress-all {
+            border-color: #2c9cee56;
+        }
+
+        .add-button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #c13571;
+            display: flex;
+            justify-content: center;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+
+        p {
+            margin-top: 6px;
+            font-size: 11px;
+        }
+
+        .todo-task {
+            background-color: #141414;
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .task-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .progress-task {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 3px solid #252525;
+            position: relative;
+            font-size: 12px;
+            font-weight: bold;
+            color: white;
+            border-color: #c13571;
+            flex-shrink: 0;
+        }
+
+        .progress-task span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .task-title {
+            margin-left: 10px;
+            font-size: 17px;
+        }
+
+        .task-content {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        button {
+            font-size: 16px;
+            background-color: #181818;
+            padding: 8px 16px;
+            border: 2px solid #181818;
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            color: white;
+            transition: background-color 0.3s, color 0.3s, border 0.3s;
+        }
+
+        button.active {
+            background-color: #c13571;
+            color: white;
+            border: 2px solid #c13571;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 65px;
+            background-color: #141414;
+            margin: 0;
+            border-top-left-radius: 25px;
+            border-top-right-radius: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        footer a {
+            margin: 0 10px;
+        }
+
+        footer svg {
+            height: 40px;
+            width: 40px;
+            background-color: #141414;
+            fill: #999999;
+            transition: fill 0.3s; 
+        }
+
+        footer a:hover svg {
+            fill: #ff914d; 
+        }
+    </style>
+</head>
+<body>
+    <p style="font-size: medium;">My Progress</p>
+    <div class="progress-container">
+        <div class="progress-item">
+            <div class="progress-circle progress-career">
+                <span>0%</span>
+            </div>
+            <p>Career</p>
+        </div>
+        <div class="progress-item">
+            <div class="progress-circle progress-mental">
+                <span>0%</span>
+            </div>
+            <p>Mental</p>
+        </div>
+        <div class="progress-item">
+            <div class="progress-circle progress-sport">
+                <span>0%</span>
+            </div>
+            <p>Sport</p>
+        </div>
+        <div class="progress-item">
+            <div class="progress-circle progress-all">
+                <span>0%</span>
+            </div>
+            <p>All</p>
+        </div>
+        <div class="progress-item">
+            <a style="text-decoration: none;" href="">
+                <div class="add-button"><b style="margin-top: 2px;">+</b></div>
+            </a>
+            <p>Add</p>
+        </div>
+    </div>
+
+    <div class="todo-task">
+        <div class="task-info">
+            <div class="progress-task progress-career">
+                <span>0%</span>
+            </div>
+            <p2 class="task-title">Task Name</p2>
+        </div>
+        <div class="task-content">
+            <button onclick="toggleInterest(this)">Task</button>
+        </div>
+    </div>
+
+    
+
+    <footer>
+        <a href="index.html">
+            <svg style="fill: #c13571;" xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#F19E39"><path d="M146.67-120q-27 0-46.84-19.83Q80-159.67 80-186.67v-466.66q0-27 19.83-46.84Q119.67-720 146.67-720H320v-93.33q0-27 19.83-46.84Q359.67-880 386.67-880h186.66q27 0 46.84 19.83Q640-840.33 640-813.33V-720h173.33q27 0 46.84 19.83Q880-680.33 880-653.33v466.66q0 27-19.83 46.84Q840.33-120 813.33-120H146.67Zm0-66.67h666.66v-466.66H146.67v466.66Zm240-533.33h186.66v-93.33H386.67V-720Zm-240 533.33v-466.66 466.66Z"/></svg>
+        </a>
+        <a href="donations.html"> 
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M444-200h70v-50q50-9 86-39t36-89q0-42-24-77t-96-61q-60-20-83-35t-23-41q0-26 18.5-41t53.5-15q32 0 50 15.5t26 38.5l64-26q-11-35-40.5-61T516-710v-50h-70v50q-50 11-78 44t-28 74q0 47 27.5 76t86.5 50q63 23 87.5 41t24.5 47q0 33-23.5 48.5T486-314q-33 0-58.5-20.5T390-396l-66 26q14 48 43.5 77.5T444-252v52Zm36 120q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+        </a>
+        <a href="account.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z"/></svg>
+        </a>
+    </footer>
+    <script>
+        function toggleInterest(button) {
+            button.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
